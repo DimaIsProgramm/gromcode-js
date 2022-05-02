@@ -1,4 +1,4 @@
-export const getInputElement = titleElem => {
+export const getTitleElement = titleElem => {
   const myElem = document.querySelector('.title');
   console.dir(myElem);
   return myElem;
