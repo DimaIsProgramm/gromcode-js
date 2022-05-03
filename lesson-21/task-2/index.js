@@ -1,4 +1,4 @@
-export const getItemList = () => {
+export const getItemsList = () => {
   const elementsList = document.querySelectorAll('.technology');
   console.dir(elementsList);
   return elementsList;
