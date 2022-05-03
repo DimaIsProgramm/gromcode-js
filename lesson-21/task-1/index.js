@@ -1,14 +1,14 @@
-// const getTitleElement = titleElem => {
-//   const myElem = document.querySelector('.title');
-//   console.dir(myElem);
-//   return myElem;
-// };
+export const getTitleElement = titleElem => {
+  const myElem = document.querySelector('.title');
+  console.dir(myElem);
+  return myElem;
+};
 
-// const getInputElement = inputElem => {
-//   const myInput = document.querySelector('input' 'type[text]');
-//   console.dir(myInput);
-//   return myInput;
-// };
+export const getInputElement = inputElem => {
+  const myInput = document.querySelector('input');
+  console.dir(myInput);
+  return myInput;
+};
 
 // const setTitle = text =>  document.querySelector('.title').textContent;
 
@@ -91,15 +91,15 @@
 // };
 // getSection(2);
 
-const finishForm = () => {
-  const inputElem = document.createElement('input');
-  inputElem.setAttribute('type', 'text', 'name');
-  inputElem.name = 'loggin';
+// const finishForm = () => {
+//   const inputElem = document.createElement('input');
+//   inputElem.setAttribute('type', 'text', 'name');
+//   inputElem.name = 'loggin';
 
-  const myInput = document.querySelector('input');
-  myInput.setAttribute('type', 'password');
+//   const myInput = document.querySelector('input');
+//   myInput.setAttribute('type', 'password');
 
-  myInput.before(inputElem);
-};
+//   myInput.before(inputElem);
+// };
 
-finishForm();
+// finishForm();
