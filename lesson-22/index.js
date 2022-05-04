@@ -31,6 +31,6 @@ buttonClear.addEventListener('click', () => {
   inputField.innerHTML = '';
 });
 
-const buttonRemoveHandlers = document.querySelector('.remove-handlers-btn');
+// const buttonRemoveHandlers = document.querySelector('.remove-handlers-btn');
 
-buttonRemoveHandlers.removeEventListener('click');
+// buttonRemoveHandlers.removeEventListener('click');
