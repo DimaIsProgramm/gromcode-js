@@ -23,3 +23,14 @@ spanElem.addEventListener('click', logGreenSpan);
 divElem.addEventListener('click', logGreyDiv, true);
 pElem.addEventListener('click', logGreyP, true);
 spanElem.addEventListener('click', logGreySpan, true);
+
+const buttonClear = document.querySelector('.clear-btn');
+const inputField = document.querySelector('.events-list');
+
+buttonClear.addEventListener('click', () => {
+  inputField.innerHTML = '';
+});
+
+const buttonRemoveHandlers = document.querySelector('.remove-handlers-btn');
+
+buttonRemoveHandlers.removeEventListener('click');
