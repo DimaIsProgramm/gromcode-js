@@ -31,6 +31,54 @@ buttonClear.addEventListener('click', () => {
   inputField.innerHTML = '';
 });
 
-// const buttonRemoveHandlers = document.querySelector('.remove-handlers-btn');
+const buttonRemoveHandlers = document.querySelector('.remove-handlers-btn');
 
-// buttonRemoveHandlers.removeEventListener('click');
+buttonRemoveHandlers.addEventListener('click', () => {
+  divElem.removeEventListener('click', logGreenDiv);
+});
+
+buttonRemoveHandlers.addEventListener('click', () => {
+  pElem.removeEventListener('click', logGreenP);
+});
+
+buttonRemoveHandlers.addEventListener('click', () => {
+  spanElem.removeEventListener('click', logGreenSpan);
+});
+
+buttonRemoveHandlers.addEventListener('click', () => {
+  divElem.removeEventListener('click', logGreyDiv, true);
+});
+
+buttonRemoveHandlers.addEventListener('click', () => {
+  pElem.removeEventListener('click', logGreyP, true);
+});
+
+buttonRemoveHandlers.addEventListener('click', () => {
+  spanElem.removeEventListener('click', logGreySpan, true);
+});
+
+const attachHandlersBtn = document.querySelector('.attach-handlers-btn');
+
+attachHandlersBtn.addEventListener('click', () => {
+  divElem.addEventListener('click', logGreenDiv);
+});
+
+attachHandlersBtn.addEventListener('click', () => {
+  pElem.addEventListener('click', logGreenP);
+});
+
+attachHandlersBtn.addEventListener('click', () => {
+  spanElem.addEventListener('click', logGreenSpan);
+});
+
+attachHandlersBtn.addEventListener('click', () => {
+  divElem.addEventListener('click', logGreyDiv, true);
+});
+
+attachHandlersBtn.addEventListener('click', () => {
+  pElem.addEventListener('click', logGreyP, true);
+});
+
+attachHandlersBtn.addEventListener('click', () => {
+  spanElem.addEventListener('click', logGreySpan, true);
+});
