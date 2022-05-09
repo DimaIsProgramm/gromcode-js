@@ -12,6 +12,7 @@ const createCheckbox = ({ done, id }) => {
   checkboxElem.setAttribute('data-id', id);
   checkboxElem.checked = done;
   checkboxElem.classList.add('list__item-checkbox');
+  return checkboxElem;
 };
 
 const createListItem = ({ text, done, id }) => {
