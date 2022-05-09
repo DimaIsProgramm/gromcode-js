@@ -9,7 +9,7 @@ export const onToggleTask = event => {
   }
 
   const tasksList = getItem('tasksList');
-  const newTaskList = tasksList.map(task => {
+  const newTasksList = tasksList.map(task => {
     if (task.id === event.target.dataset.id) {
       const done = event.target.checked;
       return {
@@ -20,7 +20,7 @@ export const onToggleTask = event => {
     }
     return task;
   });
-  setItem('taskList', newTaskList);
+  setItem('tasksList', newTasksList);
 
   renderTasks();
 };

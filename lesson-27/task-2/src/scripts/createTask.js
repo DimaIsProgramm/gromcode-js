@@ -12,14 +12,14 @@ export const onCreateTask = () => {
   taskTittleInputElem.value = '';
   const tasksList = getItem('tasksList') || [];
 
-  const newTaskList = tasksList.concat({
+  const newTasksList = tasksList.concat({
     text,
     done: false,
     createDate: new Date().toISOString(),
     id: Math.random().toString(),
   });
 
-  setItem('tasksList', newTaskList);
+  setItem('tasksList', newTasksList);
 
   renderTasks();
 };

@@ -3,8 +3,6 @@ import { getItem, setItem } from './storage.js';
 const listElem = document.querySelector('.list');
 
 const compareTasks = (a, b) => {
-  const createDate = new Date();
-
   return new Date(b.createDate) - new Date(a.createDate);
 };
 
@@ -17,13 +15,13 @@ const createCheckbox = ({ done, id }) => {
 };
 
 const createListItem = ({ text, done, id }) => {
-  const listItemElem = document.querySelector('.list');
+  const listItemElem = document.createElement('li');
   listItemElem.classList.add('list__item');
   const checkboxElem = createCheckbox({ done, id });
   if (done) {
     listItemElem.classList.add('list__item_done');
   }
-  listItemElem.append(checkboxElem.text);
+  listItemElem.append(checkboxElem, text);
 
   return listItemElem;
 };

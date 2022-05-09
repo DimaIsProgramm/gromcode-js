@@ -12,25 +12,4 @@ const onStorageChange = event => {
   }
 };
 
-const listElem = document.querySelector('.list');
-listElem.addEventListener('click', changeTaskStatus);
-
-const createTaskHandler = () => {
-  const inputElem = document.querySelector('.task-input');
-  const newInput = inputElem.value;
-
-  if (!newInput) {
-    return;
-  }
-  tasks.push({
-    text: newInput,
-    done: false,
-    id: tasks.length + 1,
-  });
-
-  inputElem.value = '';
-  renderTasks(tasks);
-};
-
-buttonELem.addEventListener('click', createTaskHandler);
 window.addEventListener('storage', onStorageChange);
