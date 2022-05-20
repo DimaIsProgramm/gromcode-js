@@ -1,5 +1,6 @@
 const formElem = document.querySelector('.login-form');
 const buttonSubmit = document.querySelector('.submit-button');
+const allInputs = document.querySelectorAll('.form-input');
 
 const onInputChange = () => {
   const isValidForm = formElem.reportValidity();
@@ -22,7 +23,7 @@ const createUserHandler = event => {
     name: 'Dima',
     password: '123',
   };
-  return fetch(serverUrl, {
+  fetch(serverUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,9 +31,8 @@ const createUserHandler = event => {
     body: JSON.stringify(user),
   })
     .then(response => response.json())
-    .then(body => {
-      alert(JSON.stringify(body));
-    });
+    .then(body => alert(JSON.stringify(body)));
+  return allInputs.forEach(input => (input.value = ''));
 };
 
 formElem.addEventListener('submit', createUserHandler);
