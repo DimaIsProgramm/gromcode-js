@@ -1,16 +1,16 @@
 const formElem = document.querySelector('.login-form');
-const inputForm = document.querySelectorAll('.form-input');
 const buttonSubmit = document.querySelector('.submit-button');
 
-// inputForm.forEach(input => {
-//   if (input.value !== '') {
-//     buttonSubmit.disabled = false;
-//   }
-// });
-// const inputEmpty = Array.from(inputForm).filter(input => input.value === '');
-// if (inputEmpty.length === 0) {
-//   buttonSubmit.disabled = false;
-// }
+const onInputChange = () => {
+  const isValidForm = formElem.reportValidity();
+  if (isValidForm) {
+    buttonSubmit.removeAttribute('disabled');
+  } else {
+    buttonSubmit.setAttribute('disabled', true);
+  }
+};
+
+formElem.addEventListener('input', onInputChange);
 
 const serverUrl = 'https://628622c1f0e8f0bb7c10e9d2.mockapi.io/api/v1/tasks';
 
@@ -22,7 +22,7 @@ const createUserHandler = event => {
     name: 'Dima',
     password: '123',
   };
-  fetch(serverUrl, {
+  return fetch(serverUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
