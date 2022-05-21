@@ -32,7 +32,7 @@ const createUserHandler = event => {
   })
     .then(response => response.json())
     .then(body => alert(JSON.stringify(body)));
-  return allInputs.forEach(input => (input.value = ''));
+  return formElem.reset();
 };
 
 formElem.addEventListener('submit', createUserHandler);
