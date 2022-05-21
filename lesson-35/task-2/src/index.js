@@ -22,9 +22,13 @@ const renderUserData = userData => {
   const liElems = document.querySelectorAll('.repos-list__item');
   fetch(repos_url)
     .then(response => response.json())
-    .then(item => item.map(elem => elem.name));
-  
-    liElems.forEach(item => item.value = )
+    .then(item => item.map(elem => elem.name))
+    .then(array =>
+      array.forEach(element => {
+        liElem.value = element;
+      }),
+    );
+
   repoList.append(liElem);
 };
 
