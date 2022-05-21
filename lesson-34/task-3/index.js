@@ -25,7 +25,7 @@ const createUserHandler = event => {
     name: nameInput.value,
     password: passwordInput.value,
   };
-  const promise = fetch(serverUrl, {
+  return fetch(serverUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,8 +35,13 @@ const createUserHandler = event => {
     .then(response => {
       return response.json();
     })
-    .then(body => alert(JSON.stringify(body)));
-  return formElem.reset();
+    .then(body => {
+      alert(JSON.stringify(body));
+      return body;
+    })
+    .then(input => {
+      formElem.reset(input);
+    });
 };
 
 formElem.addEventListener('submit', createUserHandler);
