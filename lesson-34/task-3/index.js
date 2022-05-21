@@ -1,6 +1,8 @@
 const formElem = document.querySelector('.login-form');
 const buttonSubmit = document.querySelector('.submit-button');
-const allInputs = document.querySelectorAll('.form-input');
+const emailInput = document.querySelector('[name="email"]');
+const nameInput = document.querySelector('[name="name"]');
+const passwordInput = document.querySelector('[name="password"]');
 
 const onInputChange = () => {
   const isValidForm = formElem.reportValidity();
@@ -13,24 +15,26 @@ const onInputChange = () => {
 
 formElem.addEventListener('input', onInputChange);
 
-const serverUrl = 'https://628622c1f0e8f0bb7c10e9d2.mockapi.io/api/v1/tasks';
+const serverUrl = 'https://628622c1f0e8f0bb7c10e9d2.mockapi.io/api/v1/users';
 
 const createUserHandler = event => {
   event.preventDefault();
 
   const user = {
-    email: 'test@gmail.com',
-    name: 'Dima',
-    password: '123',
+    email: emailInput.value,
+    name: nameInput.value,
+    password: passwordInput.value,
   };
-  fetch(serverUrl, {
+  const promise = fetch(serverUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   })
-    .then(response => response.json())
+    .then(response => {
+      return response.json();
+    })
     .then(body => alert(JSON.stringify(body)));
   return formElem.reset();
 };
