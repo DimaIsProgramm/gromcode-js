@@ -1,40 +1,38 @@
-const userAvatarElem = document.querySelector('.user__avatar');
-const userNameElem = document.querySelector('.user__name');
-const userLocationElem = document.querySelector('.user__location');
-const repoList = document.querySelector('.repo-list');
+import { fetchUserData, fetchRepositories } from './gateways.js';
+import { renderUserData } from './user.js';
+import { renderRepos, cleanReposList } from './repos.js';
+import { showSpinner, hideSpinner } from './spinner.js';
+
+const defaultUser = {
+  avatar_url: 'https://avatars3.githubusercontent.com/u10001',
+  name: '',
+  location: '',
+};
+
+renderUserData(defaultUser);
 
 const showUserBtnElem = document.querySelector('.name-form__btn');
 const userNameInputElem = document.querySelector('.name-form__input');
 
-const fetchUserData = userName => {
-  return fetch(`https://api.github.com/users/${userName}`).then(response => response.json());
-};
-
-const renderUserData = userData => {
-  const { avatar_url, name, location, repos_url } = userData;
-  console.log(userData);
-  userAvatarElem.src = avatar_url;
-  userNameElem.textContent = name;
-  userLocationElem.textContent = location ? `from ${location}` : '';
-
-  const liElem = document.createElement('li');
-  liElem.classList.add('repo-list__item');
-  const liElems = document.querySelectorAll('.repos-list__item');
-  fetch(repos_url)
-    .then(response => response.json())
-    .then(item => item.map(elem => elem.name))
-    .then(array =>
-      array.forEach(element => {
-        liElem.value = element;
-      }),
-    );
-
-  repoList.append(liElem);
-};
-
 const onSearchUser = () => {
+  showSpinner();
+  cleanReposList();
   const userName = userNameInputElem.value;
-  fetchUserData(userName).then(userData => renderUserData(userData));
+  fetchUserData(userName)
+    .then(userData => {
+      renderUserData(userData);
+      return userData.repos_url;
+    })
+    .then(url => fetchRepositories(url))
+    .then(reposList => {
+      renderRepos(reposList);
+    })
+    .catch(err => {
+      alert(err.message);
+    })
+    .finally(() => {
+      hideSpinner();
+    });
 };
 
 showUserBtnElem.addEventListener('click', onSearchUser);
